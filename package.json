@@ -1,0 +1,27 @@
+{
+  "name": "ng-rolodex",
+  "version": "1.0.0",
+  "description": "Angular 2+ Exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjuntilla/ng-rolodex.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sjuntilla/ng-rolodex/issues"
+  },
+  "homepage": "https://github.com/sjuntilla/ng-rolodex#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "bookshelf": "^0.14.2",
+    "express": "^4.16.4",
+    "knex": "^0.16.5",
+    "pg": "^7.10.0",
+    "pg-hstore": "^2.3.2"
+  }
+}
