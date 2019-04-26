@@ -14,9 +14,3 @@ router.route('/')
         res.status(500).send('Error: Could not retrieve contacts.');
       });
   });
-
-router.post('/', (req, res) => {
-  Contact.forge({
-
-  })
-})
