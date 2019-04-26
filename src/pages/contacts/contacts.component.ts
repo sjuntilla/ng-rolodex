@@ -1,5 +1,4 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { Contact } from '../../../server/database/models/contact_model.js';
 
 @Component({
     selector: 'app-contact',

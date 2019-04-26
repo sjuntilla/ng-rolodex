@@ -1,17 +1,19 @@
-<div>
-  <h1>
-    Login Page
-  </h1>
-</div>
+<div class="login-wrapper">
+  <div>
+    <h1>
+      Login
+    </h1>
+  </div>
 
-<div class="login-container">
-  <form>
-    <input type="text" name="username" placeholder="username" [(ngModel)]="loginFormData.username">
+  <div class="login-container">
+    <form>
+      <input type="text" name="username" placeholder="username" [(ngModel)]="loginFormData.username">
 
-    <input type="text" name="password" placeholder="password" [(ngModel)]="loginFormData.password">
+      <input type="text" name="password" placeholder="password" [(ngModel)]="loginFormData.password">
 
-    <button class="btn" (click)="login()">Login</button>
+      <button class="btn" (click)="login()">Login</button>
 
-    {{ loginFormData | json}}
-  </form>
+      {{ loginFormData | json}}
+    </form>
+  </div>
 </div>

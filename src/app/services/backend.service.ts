@@ -9,14 +9,19 @@ export class BackendService {
 
     constructor(private http: HttpClient) { }
 
+    getMovies() {
+        const endpoint = this.url + '/api/movies';
+        return this.http.get(endpoint).toPromise();
+    }
+
     register(user: { username: string }) {
-        const endpoint = this.url + '/api/register';
+        const endpoint = this.url = '/api/register';
         return this.http.post(endpoint, user).toPromise();
 
     }
 
     login(user: { username: string }) {
-        const endpoint = this.url + '/api/login';
+        const endpoint = this.url = '/api/login';
         return this.http.post(endpoint, user).toPromise();
     }
 

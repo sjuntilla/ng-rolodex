@@ -6,17 +6,17 @@ form {
   width: 100%;
   max-width: 400px;
   margin: auto;
-  background-color: #ddd;
+  background-color: #202020;
   padding: 15px;
   margin-top: 20px;
   border-radius: 10px;
-  box-shadow: 10px 10px 2px 2px #eee;
+  box-shadow: 5px 5px 2px 2px #1f1c1c;
 }
 
 .btn {
   padding: 15px;
   border: 0px;
-  background: #ee959e;
+  background: #5c374c;
   color: white;
   font-size: 16px;
   border-radius: 10px;
@@ -28,8 +28,8 @@ form {
   }
 
   &.clear {
-    border: 1px #ee959e solid;
-    background: white;
+    border: 1px #5c374c solid;
+    background: #985277;
     color: #333;
   }
 }
@@ -38,8 +38,13 @@ form {
   padding: 15px 0;
 }
 
+label {
+  color: #ffffff;
+}
+
 input,
 textarea {
+  background: #5c374c;
   width: 100%;
   max-width: 100%;
   padding: 15px;
@@ -47,6 +52,12 @@ textarea {
   border: 0px;
   margin-top: 10px;
   font-size: 16px;
+
+  &::placeholder {
+    color: #ffffff;
+    font-weight: bolder;
+    opacity: 0.5;
+  }
 
   &.error {
     border: 1px solid red;

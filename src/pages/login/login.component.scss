@@ -2,29 +2,46 @@ h1 {
   padding: 15px;
 }
 
+.login-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+}
+
 .login-container {
   width: 100%;
   max-width: 400px;
-  background-color: #ddd;
+  background-color: #202020;
   border-radius: 10px;
-  box-shadow: 10px 10px 2px 2px #eee;
+  box-shadow: 5px 5px 2px 2px #1f1c1c;
   margin: auto;
   padding: 15px;
+  color: #ffffff;
 
   input {
     width: 100%;
+    background: #5c374c;
+    color: #ffffff;
     padding: 15px;
     border-radius: 10px;
     border: 0px;
     margin-top: 10px;
     font-size: 16px;
+
+    &::placeholder {
+      color: #ffffff;
+      opacity: 0.5;
+      font-weight: bolder;
+    }
   }
 
   .btn {
     margin: 15px 0;
     padding: 15px;
     border: 0px;
-    background: #1e5799;
+    background: #985277;
     color: white;
     font-size: 16px;
     border-radius: 10px;
