@@ -49,16 +49,16 @@ textarea {
   font-family: 'Inconsolata', sans-serif;
   width: 100%;
   max-width: 100%;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
   border: 0px;
-  margin-top: 10px;
-  font-size: 16px;
+  margin-top: 5px;
+  font-size: 12px;
 
   &::placeholder {
     color: #ffffff;
     font-weight: bolder;
-    opacity: 0.5;
+    opacity: 0.2;
   }
 
   &.error {

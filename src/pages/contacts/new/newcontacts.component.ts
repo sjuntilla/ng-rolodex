@@ -13,10 +13,22 @@ export class NewContactComponent implements AfterViewInit {
     formData: {
         name: string,
         email: string,
+        mobile: number,
+        work: number,
+        home: number,
+        twitter: string,
+        instagram: string,
+        github: string,
         message: string
     } = {
             name: '',
             email: '',
+            mobile: 0,
+            work: 0,
+            home: 0,
+            twitter: '',
+            instagram: '',
+            github: '',
             message: ''
         }
 

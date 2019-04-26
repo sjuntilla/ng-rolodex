@@ -22,7 +22,37 @@
   </div>
 
   <div class="input-group">
-    <label for="message">Message</label><br>
+    <label for="mobile">Mobile Number</label><br>
+    <input type="text" name="mobile" placeholder="mobile" [(ngModel)]="fornData.mobile" #mobile="ngModel" />
+  </div>
+
+  <div class="input-group">
+    <label for="work">Work Number</label><br>
+    <input type="text" name="work" placeholder="work" [(ngModel)]="fornData.work" #work="ngModel" />
+  </div>
+
+  <div class="input-group">
+    <label for="Home">Home Number</label><br>
+    <input type="text" name="Home" placeholder="home" [(ngModel)]="fornData.home" #home="ngModel" />
+  </div>
+
+  <div class="input-group">
+    <label for="Twitter">Twitter Handle</label><br>
+    <input type="text" name="Twitter" placeholder="twitter" [(ngModel)]="formData.twitter" #twitter="ngModel" />
+  </div>
+
+  <div class="input-group">
+    <label for="instagram">Instagram Handle</label><br>
+    <input type="text" name="instagram" placeholder="instagram" [(ngModel)]="formData.instagram" #instagram="ngModel" />
+  </div>
+
+  <div class="input-group">
+    <label for="github">Github Handle</label><br>
+    <input type="text" name="github" placeholder="github" [(ngModel)]="formData.github" #github="ngModel" />
+  </div>
+
+  <div class="input-group">
+    <label for="message">Comment</label><br>
     <textarea name="message" [ngClass]="{'error': messageErrorMessage && message.touched}" id="message" cols="30"
       rows="10" placeholder="Message" [(ngModel)]="formData.message" (keyup)="validateMessage()"
       (blur)="validateMessage()" #message="ngModel"></textarea>
