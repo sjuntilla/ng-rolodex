@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { BackendService } from '../../../app/services/backend.service';
 
 @Component({
@@ -8,5 +8,11 @@ import { BackendService } from '../../../app/services/backend.service';
 })
 
 export class SearchComponent implements OnInit {
+    @ViewChild('searchInput') searchInput: ElementRef;
     ngOnInit() { }
+    ngAfterViewInit() {
+        this.searchInput.nativeElement.focus();
+    }
+
+
 }

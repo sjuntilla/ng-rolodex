@@ -1,8 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { EmailValidator } from '@angular/forms';
 
 @Component({
-    selector: 'app-new-contact',
+    selector: 'app-newcontacts',
     templateUrl: './newcontacts.component.html',
     styleUrls: ['./newcontacts.component.scss']
 })
@@ -10,39 +9,27 @@ import { EmailValidator } from '@angular/forms';
 export class NewContactComponent implements AfterViewInit {
     @ViewChild('nameInput') nameInput: ElementRef;
 
+
     formData: {
         name: string,
-        mobile: string,
-        work: string,
-        home: string,
-        twitter: string,
-        github: string,
-        instagram: string,
         email: string,
         message: string
     } = {
             name: '',
-            mobile: '',
-            work: '',
-            home: '',
-            twitter: '',
-            github: '',
-            instagram: '',
             email: '',
             message: ''
         }
 
     nameValid: boolean = false;
     emailValid: boolean = false;
-    usernameValid: boolean = false;
     messageValid: boolean = false;
 
-    nameErrorMessage: string = 'init';
-    emailErrorMessage: string = 'init';
-    usernameErrorMessage: string = 'init';
-    messageErrorMessage: string = 'init';
+    nameErrorMessage: string = 'initial';
+    emailErrorMessage: string = 'initial';
+    messageErrorMessage: string = 'initial';
 
-    constructor() { }
+    constructor() {
+    }
 
     ngAfterViewInit() {
         this.nameInput.nativeElement.focus();
@@ -68,6 +55,32 @@ export class NewContactComponent implements AfterViewInit {
         } else {
             this.emailValid = true;
         }
+    };
+
+    validateMessage() {
+        if (!this.formData.message) {
+            this.messageErrorMessage = 'Message is required.';
+        } else if (this.formData.message.length < 3) {
+            this.messageErrorMessage = 'Message must be 3 characters or more.';
+        } else {
+            this.messageErrorMessage = '';
+        }
+    }
+
+    submit() {
+        console.log('SUBMITTEEEEDDDDD!')
+        if (this.nameErrorMessage || this.emailErrorMessage || this.messageErrorMessage) {
+            return;
+        }
+    }
+
+    clearData() {
+        this.formData.name = '';
+        this.formData.email = '';
+        this.formData.message = '';
+        this.messageErrorMessage = 'Message must be 3 characters or more.';
+        this.nameErrorMessage = 'Name must be 3 characters or more.';
+        this.emailErrorMessage = 'Email must be valid.'
     };
 
 

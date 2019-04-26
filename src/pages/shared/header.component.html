@@ -20,6 +20,11 @@
           <a routerLink="api/contact">Cards</a>
         </h2>
       </li>
+      <li>
+        <h2>
+          <a routerLink="api/contact/new">Add Card</a>
+        </h2>
+      </li>
     </ul>
     <div class="logged-in" *ngIf="_subscription | async">
       Welcome, {{user.username}}
