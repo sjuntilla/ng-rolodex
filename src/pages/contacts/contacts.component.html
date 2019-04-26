@@ -1,0 +1,46 @@
+<form>
+  <div class="input-group">
+    <label for="name">Name</label><br>
+    <input [ngClass]="{'error': nameErrorMessage && name.touched}" type="text" name="name" placeholder="Name"
+      [(ngModel)]="formData.name" (keyup)="validateName()" (blur)="validateName()" #name="ngModel" #nameInput />
+
+    <div class="error" *ngIf="nameErrorMessage && name.touched">
+      {{nameErrorMessage}}
+    </div>
+
+  </div>
+
+  <div class="input-group">
+    <label for="email">Email</label><br>
+    <input [ngClass]="{'error': emailErrorMessage && email.touched}" type="text" name="email" placeholder="Email"
+      [(ngModel)]="formData.email" (keyup)="validateEmail()" (blur)="validateEmail()" #email="ngModel" />
+
+    <div class="error" *ngIf="emailErrorMessage && email.touched">
+      {{emailErrorMessage}}
+    </div>
+
+  </div>
+
+  <div class="input-group">
+    <label for="message">Message</label><br>
+    <textarea name="message" [ngClass]="{'error': messageErrorMessage && message.touched}" id="message" cols="30"
+      rows="10" placeholder="Message" [(ngModel)]="formData.message" (keyup)="validateMessage()"
+      (blur)="validateMessage()" #message="ngModel"></textarea>
+
+    <div class="error" *ngIf="messageErrorMessage && message.touched">
+      {{messageErrorMessage}}
+    </div>
+
+  </div>
+  <div class="input-group">
+    <button class="btn" (click)="submit()"
+      [disabled]="nameErrorMessage || emailErrorMessage || messageErrorMessage">Submit</button>
+  </div>
+  <button (click)="clearData()" class="btn clear">Clear</button>
+</form>
+
+{{ formData | json }}
+<br><br>
+{{'nameValid: ' + nameValid}}<br>
+{{'emailValid: ' + emailValid}}<br>
+{{'messageValid: ' + messageValid}}
