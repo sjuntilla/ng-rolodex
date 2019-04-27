@@ -66,3 +66,9 @@ textarea {
     color: red;
   }
 }
+
+.wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}

@@ -10,6 +10,8 @@ li {
 
   a {
     text-decoration: none;
+    margin: 15px;
+    opacity: 0.4;
   }
 }
 
@@ -25,7 +27,7 @@ li {
 
   .header-left {
     margin: 0 15px;
-    font-size: 15pt;
+    font-size: 20pt;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 5px;
@@ -36,6 +38,12 @@ li {
     flex-flow: row nowrap;
     float: right;
     margin: 0 15px;
+    text-transform: lowercase;
+  }
+
+  .logged-in {
+    font-size: 15px;
+    color: #995d7f;
   }
 }
 

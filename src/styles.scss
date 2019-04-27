@@ -27,6 +27,16 @@ a:hover {
 }
 
 h1 {
-  font-size: 15pt;
+  font-size: 25pt;
   color: #985277;
+  margin-bottom: 0;
+  font-weight: bolder;
+  text-transform: lowercase;
+  letter-spacing: 5px;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }

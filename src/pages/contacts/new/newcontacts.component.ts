@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { BackendService } from '../../../app/services/backend.service';
 
 @Component({
     selector: 'app-newcontacts',
@@ -33,14 +34,14 @@ export class NewContactComponent implements AfterViewInit {
         }
 
     nameValid: boolean = false;
-    emailValid: boolean = false;
+    // emailValid: boolean = false;
     messageValid: boolean = false;
 
     nameErrorMessage: string = 'initial';
-    emailErrorMessage: string = 'initial';
+    // emailErrorMessage: string = 'initial';
     messageErrorMessage: string = 'initial';
 
-    constructor() {
+    constructor(private backend: BackendService) {
     }
 
     ngAfterViewInit() {
@@ -57,17 +58,17 @@ export class NewContactComponent implements AfterViewInit {
         }
     };
 
-    validateEmail() {
-        if (!this.formData.email) {
-            this.emailErrorMessage = 'Email is required.'
-        } else if (this.formData.email.length < 3) {
-            this.emailErrorMessage = 'Email must be 3 characters or more.'
-        } else if (!this.formData.email.includes('@')) {
-            this.emailErrorMessage = 'Email must be valid.'
-        } else {
-            this.emailValid = true;
-        }
-    };
+    // validateEmail() {
+    //     if (!this.formData.email) {
+    //         this.emailErrorMessage = 'Email is required.'
+    //     } else if (this.formData.email.length < 3) {
+    //         this.emailErrorMessage = 'Email must be 3 characters or more.'
+    //     } else if (!this.formData.email.includes('@')) {
+    //         this.emailErrorMessage = 'Email must be valid.'
+    //     } else {
+    //         this.emailValid = true;
+    //     }
+    // };
 
     validateMessage() {
         if (!this.formData.message) {
@@ -81,19 +82,29 @@ export class NewContactComponent implements AfterViewInit {
 
     submit() {
         console.log('SUBMITTEEEEDDDDD!')
-        if (this.nameErrorMessage || this.emailErrorMessage || this.messageErrorMessage) {
+        if (this.nameErrorMessage || this.messageErrorMessage) {
             return;
         }
     }
 
     clearData() {
         this.formData.name = '';
-        this.formData.email = '';
+        // this.formData.email = '';
         this.formData.message = '';
         this.messageErrorMessage = 'Message must be 3 characters or more.';
         this.nameErrorMessage = 'Name must be 3 characters or more.';
-        this.emailErrorMessage = 'Email must be valid.'
+        // this.emailErrorMessage = 'Email must be valid.'
     };
+
+    addCard() {
+        this.backend.addCard(this.formData)
+            .then(() => {
+                console.log(`CARD ADDED: ${this.formData}`)!!
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
 
 }

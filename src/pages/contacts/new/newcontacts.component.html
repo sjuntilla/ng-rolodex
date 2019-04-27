@@ -1,76 +1,75 @@
-<form method="POST" action="/api/contacts">
-  <div class="input-group">
-    <label for="name">Name</label><br>
-    <input [ngClass]="{'error': nameErrorMessage && name.touched}" type="text" name="name" placeholder="Name"
-      [(ngModel)]="formData.name" (keyup)="validateName()" (blur)="validateName()" #name="ngModel" #nameInput />
+<div class="wrapper">
+  <h1>Add Contact</h1>
+  <form method="POST" action="/api/contacts">
+    <div class="input-group">
+      <label for="name">Name</label><br>
+      <input [ngClass]="{'error': nameErrorMessage && name.touched}" type="text" name="name" placeholder="Name"
+        [(ngModel)]="formData.name" (keyup)="validateName()" (blur)="validateName()" #name="ngModel" #nameInput />
 
-    <div class="error" *ngIf="nameErrorMessage && name.touched">
-      {{nameErrorMessage}}
+      <div class="error" *ngIf="nameErrorMessage && name.touched">
+        {{nameErrorMessage}}
+      </div>
+
     </div>
 
-  </div>
+    <div class="input-group">
+      <label for="email">Email</label><br>
+      <input type="text" name="email" placeholder="Email" [(ngModel)]="formData.email" #email="ngModel" />
 
-  <div class="input-group">
-    <label for="email">Email</label><br>
-    <input [ngClass]="{'error': emailErrorMessage && email.touched}" type="text" name="email" placeholder="Email"
-      [(ngModel)]="formData.email" (keyup)="validateEmail()" (blur)="validateEmail()" #email="ngModel" />
 
-    <div class="error" *ngIf="emailErrorMessage && email.touched">
-      {{emailErrorMessage}}
     </div>
 
-  </div>
-
-  <div class="input-group">
-    <label for="mobile">Mobile Number</label><br>
-    <input type="text" name="mobile" placeholder="mobile" [(ngModel)]="formData.mobile" #mobile="ngModel" />
-  </div>
-
-  <div class="input-group">
-    <label for="work">Work Number</label><br>
-    <input type="text" name="work" placeholder="work" [(ngModel)]="formData.work" #work="ngModel" />
-  </div>
-
-  <div class="input-group">
-    <label for="Home">Home Number</label><br>
-    <input type="text" name="Home" placeholder="home" [(ngModel)]="formData.home" #home="ngModel" />
-  </div>
-
-  <div class="input-group">
-    <label for="Twitter">Twitter Handle</label><br>
-    <input type="text" name="Twitter" placeholder="twitter" [(ngModel)]="formData.twitter" #twitter="ngModel" />
-  </div>
-
-  <div class="input-group">
-    <label for="instagram">Instagram Handle</label><br>
-    <input type="text" name="instagram" placeholder="instagram" [(ngModel)]="formData.instagram" #instagram="ngModel" />
-  </div>
-
-  <div class="input-group">
-    <label for="github">Github Handle</label><br>
-    <input type="text" name="github" placeholder="github" [(ngModel)]="formData.github" #github="ngModel" />
-  </div>
-
-  <div class="input-group">
-    <label for="message">Comment</label><br>
-    <textarea name="message" [ngClass]="{'error': messageErrorMessage && message.touched}" id="message" cols="30"
-      rows="10" placeholder="Message" [(ngModel)]="formData.message" (keyup)="validateMessage()"
-      (blur)="validateMessage()" #message="ngModel"></textarea>
-
-    <div class="error" *ngIf="messageErrorMessage && message.touched">
-      {{messageErrorMessage}}
+    <div class="input-group">
+      <label for="mobile">Mobile Number</label><br>
+      <input type="text" name="mobile" placeholder="mobile" [(ngModel)]="formData.mobile" #mobile="ngModel" />
     </div>
 
-  </div>
-  <div class="input-group">
-    <button class="btn" (click)="submit()"
-      [disabled]="nameErrorMessage || emailErrorMessage || messageErrorMessage">Submit</button>
-  </div>
-  <button (click)="clearData()" class="btn clear">Clear</button>
-</form>
+    <div class="input-group">
+      <label for="work">Work Number</label><br>
+      <input type="text" name="work" placeholder="work" [(ngModel)]="formData.work" #work="ngModel" />
+    </div>
 
-{{ formData | json }}
-<br><br>
-{{'nameValid: ' + nameValid}}<br>
-{{'emailValid: ' + emailValid}}<br>
-{{'messageValid: ' + messageValid}}
+    <div class="input-group">
+      <label for="Home">Home Number</label><br>
+      <input type="text" name="Home" placeholder="home" [(ngModel)]="formData.home" #home="ngModel" />
+    </div>
+
+    <div class="input-group">
+      <label for="Twitter">Twitter Handle</label><br>
+      <input type="text" name="Twitter" placeholder="twitter" [(ngModel)]="formData.twitter" #twitter="ngModel" />
+    </div>
+
+    <div class="input-group">
+      <label for="instagram">Instagram Handle</label><br>
+      <input type="text" name="instagram" placeholder="instagram" [(ngModel)]="formData.instagram"
+        #instagram="ngModel" />
+    </div>
+
+    <div class="input-group">
+      <label for="github">Github Handle</label><br>
+      <input type="text" name="github" placeholder="github" [(ngModel)]="formData.github" #github="ngModel" />
+    </div>
+
+    <div class="input-group">
+      <label for="message">Comment</label><br>
+      <textarea name="message" [ngClass]="{'error': messageErrorMessage && message.touched}" id="message" cols="30"
+        rows="10" placeholder="Message" [(ngModel)]="formData.message" (keyup)="validateMessage()"
+        (blur)="validateMessage()" #message="ngModel"></textarea>
+
+      <div class="error" *ngIf="messageErrorMessage && message.touched">
+        {{messageErrorMessage}}
+      </div>
+
+    </div>
+    <div class="input-group">
+      <button class="btn" (click)="addCard()" [disabled]="nameErrorMessage || messageErrorMessage">Submit</button>
+    </div>
+    <button (click)="clearData()" class="btn clear">Clear</button>
+  </form>
+
+  {{ formData | json }}
+  <br><br>
+  {{'nameValid: ' + nameValid}}<br>
+  {{'emailValid: ' + emailValid}}<br>
+  {{'messageValid: ' + messageValid}}
+</div>

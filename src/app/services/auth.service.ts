@@ -14,8 +14,10 @@ export class AuthService {
     }
 
     login(user: { username: string }) {
+        console.log(user);
         return this.backend.login(user)
             .then((user: { username: string }) => {
+                console.log(`USER: ${user}`);
                 return this.session.setSession(user);
             });
     }

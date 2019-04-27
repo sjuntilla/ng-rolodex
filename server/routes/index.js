@@ -17,9 +17,7 @@ const User = require('../database/models/user_model');
 
 router.route('/contacts')
   .get((req, res) => {
-    Contact.where({
-        created_by: req.user.id
-      }).fetchAll()
+    Contact.fetchAll()
       .then((contacts) => {
         contacts = contacts.models;
         return res.json(contacts);
@@ -42,6 +40,7 @@ router.route('/contacts')
         method: 'insert'
       })
       .then((contact) => {
+        contact = contact.model;
         return res.json({
           contact
         })
@@ -49,6 +48,17 @@ router.route('/contacts')
   });
 
 router.route('/contacts/:id')
+  .get((req, res) => {
+    Contact.where({
+        id: req.body.id
+      }).fetchAll()
+      .then((contact) => {
+        contact = contact.model;
+        return res.json({
+          contact
+        })
+      })
+  })
   .put((req, res) => {
     const body = req.body;
     new Contact({
@@ -67,6 +77,7 @@ router.route('/contacts/:id')
         patch: true
       })
       .then((contact) => {
+        contact = contact.model;
         return res.json({
           contact
         });
@@ -83,6 +94,7 @@ router.route('/contacts/:id')
       });
     });
   });
+
 
 /******************
  * LOGIN/AUTH 
@@ -141,10 +153,12 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   return res.json({
-    id: req.user.id,
-    username: req.user.username
+    id: 2,
+    username: req.body.username
   });
 });
+
+
 
 router.post('/logout', (req, res) => {
   req.logout();

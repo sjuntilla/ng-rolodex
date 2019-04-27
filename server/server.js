@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const session = require('express-session');
 const redis = require('connect-redis')(session);
@@ -11,7 +12,8 @@ const LocalStrategy = require('passport-local');
 const User = require('./database/models/user_model');
 const routes = require('./routes');
 const PORT = process.env.PORT || 8080;
-// const SESSION_SECRET = process.env.SESSION_SECRET || 'nope';
+const SESSION_SECRET = process.env.SESSION_SECRET || 'nope';
+app.use(cors());
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -19,68 +21,68 @@ app.use(bodyParser.json());
 /*****************
  * AUTH THINGS
  *****************/
-// app.use(session({
-//   store: new redis({
-//     url: 'redis:/redis-server:6479',
-//     logErrors: true
-//   }),
-//   secret: SESSION_SECRET,
-//   resave: false,
-//   saveUninitialized: false
-// }));
+app.use(session({
+  store: new redis({
+    url: 'redis:/redis-server:6379',
+    logErrors: true
+  }),
+  secret: SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-// passport.serializeUser((user, done) => {
-//   return done(null, {
-//     id: user.user_id,
-//     username: user.username
-//   })
-// });
+passport.serializeUser((user, done) => {
+  return done(null, {
+    id: user.user_id,
+    username: user.username
+  })
+});
 
-// passport.deserializeUser((user, done) => {
-//   new({
-//     id: user.user_id
-//   }).fetch()
-//     .then(existing => {
-//       if (existing === null) {
-//         return done();
-//       }
-//       existing = existing.toJSON();
-//       return done(null, {
-//         id: existing.user_id,
-//         username: existing.username
-//       });
-//     })
-//     .catch((err) => {
-//       return done(err);
-//     })
-// });
+passport.deserializeUser((user, done) => {
+  new({
+    id: user.user_id
+  }).fetch()
+    .then(existing => {
+      if (existing === null) {
+        return done();
+      }
+      existing = existing.toJSON();
+      return done(null, {
+        id: existing.user_id,
+        username: existing.username
+      });
+    })
+    .catch((err) => {
+      return done(err);
+    })
+});
 
-// passport.use(new LocalStrategy(function (username, password, done) {
-//   return new User({
-//       username: username
-//     }).fetch()
-//     .then((existing) => {
-//       if (existing === null) {
-//         redis(null, false);
-//       } else {
-//         existing = existing.toJSON();
-//         bcrypt.compare(password, exisiting.password)
-//           .then((res) => {
-//             if (res) {
-//               return done(null, existing);
-//             } else {
-//               return done(null, false);
-//             }
-//           });
-//       }
-//     })
-//     .catch(err => {
-//       return done(err);
-//     });
-// }));
+passport.use(new LocalStrategy(function (username, password, done) {
+  return new User({
+      username: username
+    }).fetch()
+    .then((existing) => {
+      if (existing === null) {
+        redis(null, false);
+      } else {
+        existing = existing.toJSON();
+        bcrypt.compare(password, existing.password)
+          .then((res) => {
+            if (res) {
+              return done(null, existing);
+            } else {
+              return done(null, false);
+            }
+          });
+      }
+    })
+    .catch(err => {
+      return done(err);
+    });
+}));
 app.use('/api', routes);
 
 const server = app.listen(PORT, () => {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { AggregateError } from 'bluebird';
 
 @Injectable({
     providedIn: 'root'
@@ -34,6 +35,7 @@ export class SessionService {
                 this.user.user_id = 0;
             }
 
+
             //update _isLoggedInSubject in construction
             this._isLoggedInSubject.next(!!userString);
         }
@@ -46,12 +48,14 @@ export class SessionService {
     //login
     setSession(user) {
         //save to memory 
+        console.log(`setSession: ${user}`); 
         this.user.username = user.username;
         this.user.user_id = user.user_id;
         this.user.loggedIn = true;
         //save to localStorage
         let userString = JSON.stringify(this.user);
         window.localStorage.setItem('user', userString);
+
 
         //update subject
         this._isLoggedInSubject.next(true);
