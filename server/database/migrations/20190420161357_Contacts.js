@@ -27,6 +27,7 @@ exports.up = function (knex, Promise) {
     table.string('twitter');
     table.string('instagram');
     table.string('github');
+    table.integer('created_by').references('user_id').inTable('users');
     table.timestamps(true, true);
   })
 

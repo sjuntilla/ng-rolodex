@@ -1,1 +1,14 @@
-<h1>this is where my cards would go... IF I HAD ANY</h1>
+<div class="contact-card">
+  <h1 class="card-name">{{contact.username}}</h1>
+  <p><b>Email:</b> {{contact.email}}</p>
+  <p><b>Mobile #:</b> {{contact.mobile}}</p>
+  <p><b>Work #:</b> {{contact.work}}</p>
+  <p><b>Home #:</b> {{contact.home}}</p>
+  <p><b>Twitter:</b> {{contact.twitter}}</p>
+  <p><b>Instagram:</b> {{contact.instagram}}</p>
+  <p><b>Github:</b> {{contact.github}}</p>
+  <div class="contact-buttons">
+    <button routerLink="/edit">Edit</button>
+    <button>Delete</button>
+  </div>
+</div>

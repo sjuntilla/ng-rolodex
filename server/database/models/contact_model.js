@@ -1,4 +1,5 @@
 const bookshelf = require('./bookshelf');
+const User = require('./user_model');
 
 const Contact = bookshelf.Model.extend({
   tableName: 'contacts',
@@ -6,4 +7,4 @@ const Contact = bookshelf.Model.extend({
   hasTimestamps: true
 })
 
-module.exports = Contact;
+module.exports = bookshelf.Model('Contact', Contact);

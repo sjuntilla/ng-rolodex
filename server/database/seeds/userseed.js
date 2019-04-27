@@ -4,19 +4,28 @@ exports.seed = function (knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('users').insert([{
-          id: 1,
+          user_id: 1,
           username: 'sam',
-          password: 'sam'
+          password: 'sam',
+          name: 'samantha',
+          email: 'juntilla@hawaii.edu',
+          address: 'a place'
         },
         {
-          id: 2,
+          user_id: 2,
           username: 'sams',
-          password: 'sams'
+          password: 'sams',
+          name: 'samantha',
+          email: 'juntilla@hawaii.edu',
+          address: 'a place'
         },
         {
-          id: 3,
+          user_id: 3,
           username: 'aaaaa',
-          password: 'aaaAA'
+          password: 'aaaAA',
+          name: 'samantha',
+          email: 'juntilla@hawaii.edu',
+          address: 'a place'
         }
       ]);
     });

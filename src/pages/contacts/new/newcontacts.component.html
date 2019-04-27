@@ -1,4 +1,4 @@
-<form>
+<form method="POST" action="/api/contacts">
   <div class="input-group">
     <label for="name">Name</label><br>
     <input [ngClass]="{'error': nameErrorMessage && name.touched}" type="text" name="name" placeholder="Name"
@@ -23,17 +23,17 @@
 
   <div class="input-group">
     <label for="mobile">Mobile Number</label><br>
-    <input type="text" name="mobile" placeholder="mobile" [(ngModel)]="fornData.mobile" #mobile="ngModel" />
+    <input type="text" name="mobile" placeholder="mobile" [(ngModel)]="formData.mobile" #mobile="ngModel" />
   </div>
 
   <div class="input-group">
     <label for="work">Work Number</label><br>
-    <input type="text" name="work" placeholder="work" [(ngModel)]="fornData.work" #work="ngModel" />
+    <input type="text" name="work" placeholder="work" [(ngModel)]="formData.work" #work="ngModel" />
   </div>
 
   <div class="input-group">
     <label for="Home">Home Number</label><br>
-    <input type="text" name="Home" placeholder="home" [(ngModel)]="fornData.home" #home="ngModel" />
+    <input type="text" name="Home" placeholder="home" [(ngModel)]="formData.home" #home="ngModel" />
   </div>
 
   <div class="input-group">
