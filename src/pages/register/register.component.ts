@@ -13,13 +13,11 @@ export class RegisterComponent implements OnInit {
     password: string,
     name: string,
     email: string,
-    address: string
   } = {
       username: '',
       password: '',
       name: '',
       email: '',
-      address: ''
     }
 
   constructor(

@@ -17,10 +17,6 @@
       <label for="email">Email:</label>
       <input type="text" name="email" [(ngModel)]="registrationData.email" />
     </div>
-    <div>
-      <label for="address">Address</label>
-      <input type="text" name="address" [(ngModel)]="registrationData.address" />
-    </div>
     <button (click)="register()">Register</button>
     <p>Already registered? <a routerLink="/api/login">Login here.</a></p>
   </form>
