@@ -5,12 +5,14 @@ import { LoginComponent } from 'src/pages/login/login.component';
 import { MainComponent } from 'src/pages/main/main.component';
 import { UserComponent } from 'src/pages/users/users.component';
 import { NewContactComponent } from 'src/pages/contacts/new/newcontacts.component';
+import { RegisterComponent } from 'src/pages/register/register.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
   { path: 'api/contact', component: ContactComponent },
   { path: 'api/contact/new', component: NewContactComponent },
   { path: 'api/login', component: LoginComponent },
+  { path: 'api/register', component: RegisterComponent },
   { path: 'api/users', component: UserComponent },
 
   { path: '**', redirectTo: '', pathMatch: 'full' }

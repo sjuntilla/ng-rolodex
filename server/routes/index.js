@@ -27,31 +27,30 @@ router.route('/contacts')
   })
 
   .post((req, res) => {
-    const newCard = req.body;
+    const body = req.body;
     Contact.forge({
-        name: newCard.name,
-        email: newCard.email,
-        mobile: newCard.mobile,
-        work: newCard.work,
-        home: newCard.home,
-        twitter: newCard.twitter,
-        instagram: newCard.instagram,
-        github: newCard.github,
-        created_by: newCard.created_by
+        name: body.name,
+        email: body.email,
+        mobile: body.mobile,
+        work: body.work,
+        home: body.home,
+        twitter: body.twitter,
+        instagram: body.instagram,
+        github: body.github,
+        created_by: body.created_by
       }).save(null, {
         method: 'insert'
       })
       .then((contact) => {
-        return res.json(
+        return res.json({
           contact
-        )
+        })
       })
   });
 
 router.route('/contacts/:id')
   .put((req, res) => {
     const body = req.body;
-
     new Contact({
         id: req.params.id
       }).save({
@@ -84,6 +83,75 @@ router.route('/contacts/:id')
       });
     });
   });
+
+/******************
+ * LOGIN/AUTH 
+ ******************/
+
+router.post('/register', (req, res) => {
+  User.where({
+      username: req.body.username
+    }).fetch()
+    .then((existing) => {
+      if (existing) {
+        res.status(400);
+        return res.json({
+          success: false
+        });
+      }
+
+      bcrypt.genSalt(12, (err, salt) => {
+        if (err) {
+          res.status(500);
+          res.json({
+            success: false
+          });
+        }
+        bcrypt.hash(req.body.password, salt, (err, hash) => {
+          if (err) {
+            res.status(500);
+            res.json({
+              success: false
+            })
+          }
+
+          return new User({
+              username: req.body.username,
+              password: hash,
+              name: req.body.name,
+              email: req.body.email,
+              address: req.body.address
+            })
+            .save()
+            .then((user) => {
+              return res.json({
+                success: true
+              })
+            })
+            .catch((err) => {
+              releaseEvents.status(500);
+              return res.json({
+                success: false
+              })
+            })
+        })
+      })
+    })
+})
+
+router.post('/login', (req, res) => {
+  return res.json({
+    id: req.user.id,
+    username: req.user.username
+  });
+});
+
+router.post('/logout', (req, res) => {
+  req.logout();
+  return res.json({
+    success: true
+  });
+})
 
 
 

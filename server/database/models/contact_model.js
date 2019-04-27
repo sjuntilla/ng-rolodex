@@ -7,4 +7,4 @@ const Contact = bookshelf.Model.extend({
   hasTimestamps: true
 })
 
-module.exports = bookshelf.Model('Contact', Contact);
+module.exports = Contact;

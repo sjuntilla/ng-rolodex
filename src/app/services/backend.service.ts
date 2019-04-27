@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SessionService } from './session.service';
 
 @Injectable({
     providedIn: 'root'
@@ -7,19 +8,20 @@ import { HttpClient } from '@angular/common/http';
 export class BackendService {
     url: string = 'http://localhost:4200';
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private session: SessionService) { }
 
-    register(user: { username: string }) {
-        return this.http.post('/api/register', user).toPromise();
-
+    register(user) {
+        const endpoint = this.url;
+        return this.http.post(endpoint + '/api/register', user).toPromise();
     }
 
-    login(user: { username: string }) {
-        return this.http.post('/api/login', user).toPromise();
+    login(user) {
+        const endpoint = this.url;
+        return this.http.post(endpoint + '/api/login', user).toPromise();
     }
 
     logout() {
-        return this.http.post('/api/logout', null).toPromise();
-
+        const endpoint = this.url;
+        return this.http.post(endpoint + '/api/logout', null).toPromise();
     }
 }

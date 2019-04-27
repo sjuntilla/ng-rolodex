@@ -1,0 +1,27 @@
+<h1>Register</h1>
+<div class="register-wrapper">
+  <form>
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" name="username" [(ngModel)]="registrationData.username" />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="text" name="password" [(ngModel)]="registrationData.password" />
+    </div>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" name="name" [(ngModel)]="registrationData.name" />
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="text" name="email" [(ngModel)]="registrationData.email" />
+    </div>
+    <div>
+      <label for="address">Address</label>
+      <input type="text" name="address" [(ngModel)]="registrationData.address" />
+    </div>
+    <button (click)="register()">Register</button>
+    <p>Already registered? <a routerLink="/api/login">Login here.</a></p>
+  </form>
+</div>

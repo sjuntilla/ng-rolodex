@@ -18,7 +18,7 @@
 // };
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('contacts', table => {
-    table.increments('id').primary();
+    table.increments();
     table.string('name');
     table.string('email');
     table.string('mobile');

@@ -19,6 +19,7 @@ import { UserComponent } from 'src/pages/users/users.component';
 import { SearchComponent } from 'src/pages/main/search/search.component';
 import { NewContactComponent } from 'src/pages/contacts/new/newcontacts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterComponent } from '../pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MainComponent,
     UserComponent,
     SearchComponent,
-    NewContactComponent
+    NewContactComponent,
+    RegisterComponent
   ],
   imports: [
     FormsModule,

@@ -1,0 +1,53 @@
+h1 {
+  padding: 15px;
+}
+
+.register-wrapper {
+  width: 100%;
+  max-width: 400px;
+  background-color: #202020;
+  border-radius: 10px;
+  box-shadow: 5px 5px 2px 2px #1f1c1c;
+  margin: auto;
+  padding: 15px;
+  color: #ffffff;
+
+  input {
+    width: 100%;
+    font-family: 'Inconsolata', sans-serif;
+    background: #5c374c;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    border: 0px;
+    margin-top: 10px;
+    font-size: 16px;
+
+    &::placeholder {
+      color: #ffffff;
+      opacity: 0.5;
+      font-weight: bolder;
+    }
+  }
+
+  label {
+    padding: 5px;
+  }
+
+  button {
+    margin: 15px 0;
+    padding: 15px;
+    border: 0px;
+    background: #985277;
+    font-family: 'Inconsolata', sans-serif;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 100%;
+
+    &:disabled {
+      background-color: #ccc;
+    }
+  }
+}

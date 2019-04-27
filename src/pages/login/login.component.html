@@ -11,7 +11,8 @@
 
       <input type="text" name="password" placeholder="password" [(ngModel)]="loginFormData.password">
 
-      <button class="btn" (click)="login()">Login</button>
+      <button class="btn" (click)="login()">Login</button><br>
+      New here? <a routerLink="/api/register">Register here.</a>
 
       {{ loginFormData | json}}
     </form>
