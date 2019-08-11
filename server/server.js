@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const decorator = require('./decorator');
 
 const session = require('express-session');
 const redis = require('connect-redis')(session);
@@ -16,7 +17,13 @@ const SESSION_SECRET = process.env.SESSION_SECRET || 'nope';
 app.use(cors());
 
 app.use(express.static('public'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+  extended: true
+}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(decorator);
 
 /*****************
  * AUTH THINGS

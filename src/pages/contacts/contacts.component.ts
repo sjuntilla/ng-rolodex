@@ -1,39 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { Contact } from '../../../server/database/models/contact_model.js';
+import { Component } from '@angular/core';
+import { BackendService } from '../../app/services/backend.service';
 @Component({
     selector: 'app-contacts',
     templateUrl: './contacts.component.html',
     styleUrls: ['./contacts.component.scss']
 })
-export class ContactComponent implements OnInit {
-    cardData: {
-        id: number,
-        name: string,
-        email: string,
-        created_at: string,
-        updated_at: string,
-        address: string,
-        mobile: string,
-        work: string,
-        home: string,
-        twitter: string,
-        instagram: string,
-        github: string
-    } = {
-            id: 0,
-            name: '',
-            email: '',
-            created_at: '',
-            updated_at: '',
-            address: '',
-            mobile: '',
-            work: '',
-            home: '',
-            twitter: '',
-            instagram: '',
-            github: ''
-        }
+export class ContactComponent {
+    cards: Object[] = [];
 
-    constructor() { };
-    ngOnInit() { };
+    constructor(private backend: BackendService) {
+        this.backend.getCards().then((res: Object[]) => {
+            this.cards = res;
+            console.log(res)
+        })
+    };
+
+    delete() {
+        console.log(`this will probably be deleted: ${this.cards}`);
+    }
+
 }
+

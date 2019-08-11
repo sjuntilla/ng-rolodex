@@ -1,14 +1,9 @@
 const express = require('express');
-const app = express();
 const router = express.Router();
 
 //auth
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-
-//models
-const Contact = require('../database/models/contact_model');
-const User = require('../database/models/user_model');
 
 
 /******************
@@ -17,30 +12,31 @@ const User = require('../database/models/user_model');
 
 router.route('/contacts')
   .get((req, res) => {
-    Contact.fetchAll()
+    return new req.database.Contacts().fetchAll()
       .then((contacts) => {
-        contacts = contacts.models;
+        res.status(200);
+        console.log(contacts);
         return res.json(contacts);
+      }).catch(err => {
+        console.log(err);
+        res.sendStatus(500);
       })
   })
 
   .post((req, res) => {
-    const body = req.body;
-    Contact.forge({
-        name: body.name,
-        email: body.email,
-        mobile: body.mobile,
-        work: body.work,
-        home: body.home,
-        twitter: body.twitter,
-        instagram: body.instagram,
-        github: body.github,
-        created_by: body.created_by
-      }).save(null, {
-        method: 'insert'
-      })
+    return new req.database.Contacts({
+        name: req.body.name,
+        email: req.body.email,
+        mobile: req.body.mobile,
+        work: req.body.work,
+        home: req.body.home,
+        twitter: req.body.twitter,
+        instagram: req.body.instagram,
+        github: req.body.github,
+        created_by: req.body.created_by
+      }).save()
       .then((contact) => {
-        contact = contact.model;
+        res.redirect('/api/contacts');
         return res.json({
           contact
         })
@@ -49,7 +45,8 @@ router.route('/contacts')
 
 router.route('/contacts/:id')
   .get((req, res) => {
-    Contact.where({
+    console.log('HELLO??')
+    Contacts.where({
         id: req.body.id
       }).fetchAll()
       .then((contact) => {
@@ -61,7 +58,7 @@ router.route('/contacts/:id')
   })
   .put((req, res) => {
     const body = req.body;
-    new Contact({
+    new Contacts({
         id: req.params.id
       }).save({
         name: body.name,
@@ -85,7 +82,7 @@ router.route('/contacts/:id')
   })
 
   .delete((req, res) => {
-    new Contact({
+    new Contacts({
       id: req.params.id
     }).destroy().then(() => {
       res.status(200);
@@ -153,7 +150,7 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   return res.json({
-    id: 2,
+    id: req.body.id,
     username: req.body.username
   });
 });

@@ -29,7 +29,12 @@ export class BackendService {
 
     getCards() {
         const endpoint = this.url;
-        return this.http.get(endpoint + '/api/contacts', null).toPromise();
+        return this.http.get(endpoint + '/api/contacts').toPromise();
+    }
+
+    getCard() {
+        const endpoint = this.url;
+        return this.http.get(endpoint + '/api/contacts/:id', null).toPromise();
     }
 
     addCard(card) {

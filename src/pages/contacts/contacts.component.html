@@ -1,14 +1,16 @@
-<div class="contact-card">
-  <h1 class="card-name">{{cardData.name}}</h1>
-  <p><b>Email:</b> {{cardData.email}}</p>
-  <p><b>Mobile #:</b> {{cardData.mobile}}</p>
-  <p><b>Work #:</b> {{cardData.work}}</p>
-  <p><b>Home #:</b> {{cardData.home}}</p>
-  <p><b>Twitter:</b> {{cardData.twitter}}</p>
-  <p><b>Instagram:</b> {{cardData.instagram}}</p>
-  <p><b>Github:</b> {{cardData.github}}</p>
-  <div class="contact-buttons">
-    <button routerLink="/edit">Edit</button>
-    <button>Delete</button>
+<div class="cardholder">
+  <div class="contact-card" *ngFor="let cards of cards">
+    <p><b class="inner-card-name">{{cards.name}}</b></p>
+    <p><b>Email:</b> {{cards.email}}</p>
+    <p><b>Mobile #:</b> {{cards.mobile}}</p>
+    <p><b>Work #:</b> {{cards.work}}</p>
+    <p><b>Home #:</b> {{cards.home}}</p>
+    <p><b>Twitter:</b> {{cards.twitter}}</p>
+    <p><b>Instagram:</b> {{cards.instagram}}</p>
+    <p><b>Github:</b> {{cards.github}}</p>
+    <div class="contact-buttons">
+      <button routerLink="/edit">Edit</button>
+      <button (click)="delete()">Delete</button>
+    </div>
   </div>
 </div>

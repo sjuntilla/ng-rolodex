@@ -1,10 +1,19 @@
 const bookshelf = require('./bookshelf');
 const User = require('./user_model');
 
-const Contact = bookshelf.Model.extend({
-  tableName: 'contacts',
-  idAttribute: 'id',
-  hasTimestamps: true
-})
+class Contact extends bookshelf.Model {
+  get tableName() {
+    return 'contacts';
+  };
+  get hasTimestamps() {
+    return true;
+  }
+}
 
-module.exports = Contact;
+// const Contact = bookshelf.Model.extend({
+//   tableName: 'contacts',
+//   idAttribute: 'id',
+//   hasTimestamps: true
+// })
+
+module.exports = bookshelf.model('Contact', Contact);

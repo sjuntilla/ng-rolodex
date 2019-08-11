@@ -35,11 +35,11 @@ export class NewContactComponent implements AfterViewInit {
 
     nameValid: boolean = false;
     // emailValid: boolean = false;
-    messageValid: boolean = false;
+    // messageValid: boolean = false;
 
     nameErrorMessage: string = 'initial';
     // emailErrorMessage: string = 'initial';
-    messageErrorMessage: string = 'initial';
+    // messageErrorMessage: string = 'initial';
 
     constructor(private backend: BackendService) {
     }
@@ -70,19 +70,19 @@ export class NewContactComponent implements AfterViewInit {
     //     }
     // };
 
-    validateMessage() {
-        if (!this.formData.message) {
-            this.messageErrorMessage = 'Message is required.';
-        } else if (this.formData.message.length < 3) {
-            this.messageErrorMessage = 'Message must be 3 characters or more.';
-        } else {
-            this.messageErrorMessage = '';
-        }
-    }
+    // validateMessage() {
+    //     if (!this.formData.message) {
+    //         this.messageErrorMessage = 'Message is required.';
+    //     } else if (this.formData.message.length < 3) {
+    //         this.messageErrorMessage = 'Message must be 3 characters or more.';
+    //     } else {
+    //         this.messageErrorMessage = '';
+    //     }
+    // }
 
     submit() {
         console.log('SUBMITTEEEEDDDDD!')
-        if (this.nameErrorMessage || this.messageErrorMessage) {
+        if (this.nameErrorMessage) {
             return;
         }
     }
@@ -90,8 +90,8 @@ export class NewContactComponent implements AfterViewInit {
     clearData() {
         this.formData.name = '';
         // this.formData.email = '';
-        this.formData.message = '';
-        this.messageErrorMessage = 'Message must be 3 characters or more.';
+        // this.formData.message = '';
+        // this.messageErrorMessage = 'Message must be 3 characters or more.';
         this.nameErrorMessage = 'Name must be 3 characters or more.';
         // this.emailErrorMessage = 'Email must be valid.'
     };

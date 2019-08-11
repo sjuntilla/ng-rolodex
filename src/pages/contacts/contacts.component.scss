@@ -1,68 +1,53 @@
-.error {
-  color: red;
+.cardholder {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: center;
 }
 
-form {
-  width: 100%;
-  max-width: 400px;
-  margin: auto;
-  background-color: #202020;
+.contact-card {
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  align-items: center;
+  line-height: 0;
+  background-color: #292527;
+  color: #804e6a;
+  font-size: 14px;
+  max-width: 300px;
+  margin: 10px;
   padding: 15px;
-  margin-top: 20px;
   border-radius: 10px;
-  box-shadow: 5px 5px 2px 2px #1f1c1c;
-}
+  box-shadow: 2px 2px #221e1e;
 
-.btn {
-  font-family: 'Inconsolata', sans-serif;
-  padding: 15px;
-  border: 0px;
-  background: #5c374c;
-  color: white;
-  font-size: 16px;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 100%;
-
-  &:disabled {
-    background-color: #ccc;
+  .card-name {
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: 25px;
+    color: #815e73;
+    opacity: 0.1;
+    margin-bottom: 2px;
   }
 
-  &.clear {
-    border: 1px #5c374c solid;
-    background: #985277;
-    color: #333;
-  }
-}
-
-.input-group {
-  padding: 15px 0;
-}
-
-label {
-  color: #ffffff;
-}
-
-input,
-textarea {
-  background: #5c374c;
-  font-family: 'Inconsolata', sans-serif;
-  width: 100%;
-  max-width: 100%;
-  padding: 15px;
-  border-radius: 10px;
-  border: 0px;
-  margin-top: 10px;
-  font-size: 16px;
-
-  &::placeholder {
-    color: #ffffff;
+  .inner-card-name {
+    font-size: 22px;
     font-weight: bolder;
-    opacity: 0.5;
   }
+}
 
-  &.error {
-    border: 1px solid red;
-    color: red;
+.contact-buttons {
+  display: flex;
+  flex-flow: row nowrap;
+
+  button {
+    margin: 2px;
+    border: 0px;
+    background: #583046;
+    font-family: 'Inconsolata', sans-serif;
+    color: white;
+    font-size: 12px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 100%;
   }
 }
